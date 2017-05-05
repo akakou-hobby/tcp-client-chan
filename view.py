@@ -6,7 +6,7 @@ import PyQt5.QtWidgets as qt
 
 
 class View(qt.QMainWindow):
-    """View Class."""
+    """View Class"""
 
     def __init__(self):
         super().__init__()
@@ -15,8 +15,13 @@ class View(qt.QMainWindow):
         # 表示
         self.show()
 
-    def send_request(self):
-        print("hello")
+    def request_button_clicked(self):
+        """リクエストボタンが押されたとき、widgetから入力を受け取って、Contralに投げ込む"""
+        edit_text_plain = self.text_edit.toPlainText()
+        line_edit_plain = self.line_edit.text()
+        is_get_response = self.check_get_response_box.isChecked()
+
+        print(is_get_response, line_edit_plain, edit_text_plain)
 
     def initUI(self):
         """Windowの基本情報のセット"""
@@ -30,7 +35,7 @@ class View(qt.QMainWindow):
     def mainUI(self):
         """リクエストフォーム"""
         # Widget
-        self.widget = qt.QWidget()
+        widget = qt.QWidget()
 
         # Layout
         layout_box = qt.QVBoxLayout()
@@ -40,8 +45,8 @@ class View(qt.QMainWindow):
         layout_box.addWidget(url_label)
 
         # LineEdit
-        self.textbox = qt.QLineEdit(self)
-        layout_box.addWidget(self.textbox)
+        self.line_edit = qt.QLineEdit(self)
+        layout_box.addWidget(self.line_edit)
 
         # Request Label
         request_label = qt.QLabel("りくえすと")
@@ -52,14 +57,14 @@ class View(qt.QMainWindow):
         layout_box.addWidget(self.text_edit)
 
         # CheckBox
-        self.is_get_response = qt.QCheckBox('れすぽんすは受け取る？', self)
-        layout_box.addWidget(self.is_get_response)
+        self.check_get_response_box = qt.QCheckBox('れすぽんすは受け取る？', self)
+        layout_box.addWidget(self.check_get_response_box)
 
         # Button
         send_button = qt.QPushButton('そうしんっ！', self)
-        send_button.clicked.connect(self.send_request)
+        send_button.clicked.connect(self.request_button_clicked)
         layout_box.addWidget(send_button)
 
         # Layout
-        self.widget.setLayout(layout_box)
-        self.setCentralWidget(self.widget)
+        widget.setLayout(layout_box)
+        self.setCentralWidget(widget)

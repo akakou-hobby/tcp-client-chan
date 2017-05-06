@@ -2,8 +2,8 @@
 """model_control.py
 モデル周りのコントロール
 """
-import model
 import collections
+from system import tcp_model
 
 
 class SendTCPControl:
@@ -12,7 +12,11 @@ class SendTCPControl:
         """メインメソッド:送信"""
         host_port = self.divide_url(url)
         request += "\r\n\r\n"
-        response = model.sendTCP(host_port["host"], host_port["port"], request)
+        response = tcp_model.sendTCP(
+            host_port["host"],
+            host_port["port"],
+            request
+        )
         return response
 
     def divide_url(self, url):

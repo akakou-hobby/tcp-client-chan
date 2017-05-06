@@ -3,8 +3,8 @@
 リクエスト作成画面のView
 """
 import PyQt5.QtWidgets as qt
-import model_control
-import response_view
+from system import response_view
+from system import tcp_control
 
 
 class View(qt.QMainWindow):
@@ -23,7 +23,7 @@ class View(qt.QMainWindow):
         line_edit_plain = self.line_edit.text()
         is_get_response = self.check_get_response_box.isChecked()
 
-        controler = model_control.SendTCPControl()
+        controler = tcp_control.SendTCPControl()
         response = controler.sendTCP(line_edit_plain, edit_text_plain)
 
         response_view.View(response)

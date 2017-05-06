@@ -2,9 +2,9 @@
 """てぃーしーぴのくらいんとちゃん
 TCPを投げつけるのが得意なフレンズのプログラム
 """
-from PyQt5.QtWidgets import QApplication
-import request_view
 import sys
+from PyQt5.QtWidgets import QApplication
+from system import request_view
 
 
 def main():

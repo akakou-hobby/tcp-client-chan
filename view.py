@@ -3,6 +3,7 @@
 メイン画面のView
 """
 import PyQt5.QtWidgets as qt
+import control
 
 
 class View(qt.QMainWindow):
@@ -21,7 +22,8 @@ class View(qt.QMainWindow):
         line_edit_plain = self.line_edit.text()
         is_get_response = self.check_get_response_box.isChecked()
 
-        print(is_get_response, line_edit_plain, edit_text_plain)
+        controler = control.SendTCPControl()
+        controler.sendTCP(line_edit_plain, edit_text_plain)
 
     def initUI(self):
         """Windowの基本情報のセット"""
@@ -41,7 +43,7 @@ class View(qt.QMainWindow):
         layout_box = qt.QVBoxLayout()
 
         # URL Label
-        url_label = qt.QLabel("ゆーあーるえる")
+        url_label = qt.QLabel("ほすと：ぽーと")
         layout_box.addWidget(url_label)
 
         # LineEdit

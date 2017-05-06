@@ -9,15 +9,21 @@ def sendTCP(host, port, request):
     response = ""
     # set
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client.settimeout(1)
     # connect
     client.connect((host, port))
     # send
     client.send(request.encode('utf-8'))
     # get
     while True:
-        recv = client.recv(4096)
-        response += recv
-        if recv == "":
-            break
+        try:
+            recv = client.recv(1024)
+            response += recv.decode('utf-8')
 
-    return response.decode('utf-8')
+        except socket.timeout:
+            break
+    # close
+    client.close()
+
+    # return
+    return response

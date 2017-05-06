@@ -11,7 +11,9 @@ class SendTCPControl:
     def sendTCP(self, url, request):
         """メインメソッド:送信"""
         host_port = self.divide_url(url)
-        model.sendTCP(host_port["host"], host_port["port"], request)
+        request += "\r\n\r\n"
+        response = model.sendTCP(host_port["host"], host_port["port"], request)
+        return response
 
     def divide_url(self, url):
         """ポートとURLを分ける"""

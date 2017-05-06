@@ -1,6 +1,6 @@
 # coding:utf-8
-"""control.py
-コントロール
+"""model_control.py
+モデル周りのコントロール
 """
 import model
 import collections

@@ -1,9 +1,10 @@
 # coding:utf8
-"""main_view.py
-メイン画面のView
+"""request_view.py
+リクエスト作成画面のView
 """
 import PyQt5.QtWidgets as qt
-import control
+import model_control
+import response_view
 
 
 class View(qt.QMainWindow):
@@ -22,8 +23,10 @@ class View(qt.QMainWindow):
         line_edit_plain = self.line_edit.text()
         is_get_response = self.check_get_response_box.isChecked()
 
-        controler = control.SendTCPControl()
-        controler.sendTCP(line_edit_plain, edit_text_plain)
+        controler = model_control.SendTCPControl()
+        response = controler.sendTCP(line_edit_plain, edit_text_plain)
+
+        response_view.View(response)
 
     def initUI(self):
         """Windowの基本情報のセット"""
@@ -32,7 +35,7 @@ class View(qt.QMainWindow):
         # windowサイズ
         self.setGeometry(1000, 1000, 1000, 1000)
         # タイトル
-        self.setWindowTitle('てぃーしーぴーくらいんとちゃん')
+        self.setWindowTitle('てぃーしーぴーくらいんとちゃん -りくえすと-')
 
     def mainUI(self):
         """リクエストフォーム"""

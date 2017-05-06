@@ -2,16 +2,15 @@
 """てぃーしーぴのくらいんとちゃん
 TCPを投げつけるのが得意なフレンズのプログラム
 """
-import sys
-import view
-
 from PyQt5.QtWidgets import QApplication
+import request_view
+import sys
 
 
 def main():
     """Viewの呼び出し"""
     app = QApplication(sys.argv)
-    view_ = view.View()
+    request_view_ = request_view.View()
     sys.exit(app.exec_())
 
 

@@ -24,9 +24,21 @@ class View(qt.QMainWindow):
         is_get_response = self.check_get_response_box.isChecked()
 
         controler = tcp_control.SendTCPControl()
-        response = controler.sendTCP(line_edit_plain, edit_text_plain)
 
-        response_view.View(response)
+        if is_get_response:
+            response = controler.sendTCP(
+                line_edit_plain,
+                edit_text_plain,
+                is_get_response
+            )
+            response_view.View(response)
+
+        else:
+            response = controler.sendTCP(
+                line_edit_plain,
+                edit_text_plain,
+                is_get_response
+            )
 
     def initUI(self):
         """Windowの基本情報のセット"""

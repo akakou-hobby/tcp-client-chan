@@ -1,6 +1,6 @@
 # coding:utf-8
-"""model_control.py
-モデル周りのコントロール
+"""tcp_control.py
+tpc周りのコントロール
 """
 import collections
 from system import tcp_model
@@ -8,16 +8,18 @@ from system import tcp_model
 
 class SendTCPControl:
     """TCP送信コントロール"""
-    def sendTCP(self, url, request):
+    def sendTCP(self, url, request, is_get_response):
         """メインメソッド:送信"""
         host_port = self.divide_url(url)
         request += "\r\n\r\n"
-        response = tcp_model.sendTCP(
+        tpc_model_ = tcp_model.TCPModel(
             host_port["host"],
             host_port["port"],
-            request
+            request,
         )
-        return response
+
+        if is_get_response:
+            return tpc_model_.get_response()
 
     def divide_url(self, url):
         """ポートとURLを分ける"""

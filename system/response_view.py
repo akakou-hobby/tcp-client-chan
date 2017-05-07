@@ -3,6 +3,7 @@
 レスポンス閲覧画面のView
 """
 import PyQt5.QtWidgets as qt
+from system import os_model
 
 
 class View(qt.QWidget):
@@ -20,11 +21,17 @@ class View(qt.QWidget):
 
     def save_file(self):
         """ファイルへ保存する"""
-        pass
+        edit_text_plain = self.text_edit.toPlainText()
+
+        file_name = qt.QFileDialog.getSaveFileName(self, 'Save file', '/home')
+        os_model.FileModel.write(file_name, edit_text_plain)
 
     def browse_chromium(self):
         """Chromium経由でファイルを見る"""
-        pass
+        edit_text_plain = self.text_edit.toPlainText()
+
+        file_name = qt.QFileDialog.getSaveFileName(self, 'Save file', '/home')
+        os_model.FileModel.write(file_name, edit_text_plain)
 
     def initUI(self):
         """Windowの基本情報のセット"""

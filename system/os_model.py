@@ -1,6 +1,8 @@
 """os_model.py
 他プロセス関連やファイルの保存等に用いる
 """
+import threading
+import subprocess
 
 
 class FileModel():
@@ -14,3 +16,12 @@ class FileModel():
                 file_.write(resonse)
                 # close
                 file_.close()
+
+
+class OpenCromium(threading.Thread):
+    """chromiumでパケットを開く"""
+    def __init__(self):
+        super(OpenCromium, self).__init__()
+
+    def run(self, file_path):
+        subprocess.Popen(["chromium " + file_path], shell=True)

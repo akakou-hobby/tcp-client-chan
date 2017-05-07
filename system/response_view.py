@@ -32,6 +32,8 @@ class View(qt.QWidget):
 
         file_name = qt.QFileDialog.getSaveFileName(self, 'Save file', '/home')
         os_model.FileModel.write(file_name, edit_text_plain)
+        chromium = os_model.OpenCromium()
+        chromium.run(file_name[0])
 
     def initUI(self):
         """Windowの基本情報のセット"""

@@ -3,6 +3,7 @@
 """
 import threading
 import subprocess
+import configparser
 
 
 class FileModel():
@@ -18,10 +19,16 @@ class FileModel():
                 file_.close()
 
 
-class OpenCromium(threading.Thread):
+class OpenBrowser(threading.Thread):
     """chromiumでパケットを開く"""
     def __init__(self):
-        super(OpenCromium, self).__init__()
+        super(OpenBrowser, self).__init__()
+
+    def check_browser(self):
+        """ブラウザがどれか設定ファイルから読み込む"""
+        inifile = configparser.SafeConfigParser()
+        inifile.read('./.config.ini')
+        self.browser = inifile.get('General', 'browser')
 
     def run(self, file_path):
-        subprocess.Popen(["chromium " + file_path], shell=True)
+        subprocess.Popen([self.browser + file_path], shell=True)

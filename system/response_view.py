@@ -26,14 +26,15 @@ class View(qt.QWidget):
         file_name = qt.QFileDialog.getSaveFileName(self, 'Save file', '/home')
         os_model.FileModel.write(file_name, edit_text_plain)
 
-    def browse_chromium(self):
+    def open_browser(self):
         """Chromium経由でファイルを見る"""
         edit_text_plain = self.text_edit.toPlainText()
 
         file_name = qt.QFileDialog.getSaveFileName(self, 'Save file', '/home')
         os_model.FileModel.write(file_name, edit_text_plain)
-        chromium = os_model.OpenCromium()
-        chromium.run(file_name[0])
+        browser = os_model.OpenBrowser()
+        browser.check_browser()
+        browser.run(file_name[0])
 
     def initUI(self):
         """Windowの基本情報のセット"""

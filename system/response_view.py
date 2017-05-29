@@ -63,8 +63,8 @@ class View(qt.QWidget):
         layout_box.addWidget(save_button)
 
         # Button
-        chromium_button = qt.QPushButton('ほぞんしてくろみあむでみる', self)
-        chromium_button.clicked.connect(self.browse_chromium)
+        chromium_button = qt.QPushButton('ほぞんしてぶらうざでみる', self)
+        chromium_button.clicked.connect(self.open_browser)
         layout_box.addWidget(chromium_button)
 
         # Layout

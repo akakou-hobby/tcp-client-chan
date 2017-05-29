@@ -27,8 +27,8 @@ class OpenBrowser(threading.Thread):
     def check_browser(self):
         """ブラウザがどれか設定ファイルから読み込む"""
         inifile = configparser.SafeConfigParser()
-        inifile.read('./.config.ini')
+        inifile.read('./system/config.ini')
         self.browser = inifile.get('General', 'browser')
 
     def run(self, file_path):
-        subprocess.Popen([self.browser + file_path], shell=True)
+        subprocess.Popen([self.browser + ' ' + file_path], shell=True)

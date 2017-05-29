@@ -20,7 +20,7 @@ class FileModel():
 
 
 class OpenBrowser(threading.Thread):
-    """chromiumでパケットを開く"""
+    """ブラウザでパケットを開く"""
     def __init__(self):
         super(OpenBrowser, self).__init__()
 

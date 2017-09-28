@@ -1,0 +1,3 @@
+[submodule "lib/http_client"]
+	path = lib/http_client
+	url = https://github.com/akakou-hobby/low-layer-http-client

@@ -4,13 +4,14 @@ TCPを投げつけるのが得意なフレンズのプログラム
 """
 import sys
 from PyQt5.QtWidgets import QApplication
-from system import request_view
+
+import view
 
 
 def main():
     """Viewの呼び出し"""
     app = QApplication(sys.argv)
-    request_view_ = request_view.View()
+    _view = view.View()
     sys.exit(app.exec_())
 
 
